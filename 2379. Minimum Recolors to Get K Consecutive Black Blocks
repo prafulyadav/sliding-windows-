@@ -1,0 +1,22 @@
+class Solution {
+ public static int  minimumRecolors(String str, int k) {
+        int ans=0;
+        int n=0;
+        for (int i=0;i<k;i++){
+            if (str.charAt(i)=='B'){
+                n++;
+            }
+        }
+        ans=Math.max(n,ans);
+        for (int i=k;i<str.length();i++){
+            if (str.charAt(i)=='B'){
+                n++;
+            }
+            if (str.charAt(i-k)=='B'){
+                n--;
+            }
+            ans=Math.max(ans,n);
+        }
+        return k-ans;
+    }
+}
